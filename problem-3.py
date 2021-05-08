@@ -9,6 +9,8 @@ def rearrange_digits(input_list):
     """
     if not input_list:
         return []
+    if len(input_list) == 1:
+        return input_list
     quicksort(input_list)
     numbers = [0,0]
     for index, number in enumerate(input_list):
@@ -64,6 +66,7 @@ def test_function(test_number, test_case, test_subject):
 
 
 test_function(1, [[], [0, 0]],  "empty array") # []
-test_function(2, [[3, 3, 3, 3, 3], [333, 33]], "same number") # [333, 33]
-test_function(3, [[1, 2, 3, 4, 5], [542, 31]], "normal use case") # [531, 42]
-test_function(4, [[4, 6, 2, 5, 9, 8], [964, 852]], "normal use case") # [852, 964]
+test_function(2, [[1], [1]], "single item in array")
+test_function(3, [[3, 3, 3, 3, 3], [333, 33]], "same number") # [333, 33]
+test_function(4, [[1, 2, 3, 4, 5], [542, 31]], "normal use case") # [531, 42]
+test_function(5, [[4, 6, 2, 5, 9, 8], [964, 852]], "normal use case") # [852, 964]
