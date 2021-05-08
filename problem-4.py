@@ -26,33 +26,26 @@ def sort_012(input_list):
             return None
     return input_list
     
-def test_function(test_number, test_case):
+def test_function(test_number, test_case, test_description):
     allowed_numbers = [0,1,2]
     sorted_array = sort_012(test_case)
     correct_array = sorted(test_case)
-    # print(correct_array)
+    result = ""
     if sorted_array == sorted(test_case):
-        print(test_number, "Pass")
+        result = "Pass"
     else:
         if correct_array[0] not in allowed_numbers or correct_array[-1] not in allowed_numbers:
             if sorted_array == None:
-                print(test_number, "Pass")
+                result = "Pass"
             else:
-                print(test_number, "Fail")
+                result = "Fail"
             return
-        print(test_number, "Fail")
+        result = "Fail"
+    print("{} - {} - {}".format(test_number, result, test_description))
 
-# Test 1 - empty array
-test_function(1, [])
-
-# Test 2 - sorted array
-test_function(2, [0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2])
-
-# Test 3 - unknown number
-test_function(3, [1,2,0,0,1,2,0,3,2,1])
-
-# Test 4 - missing one of the numbers
-test_function(4, [1,2,2,1,1,2,1,2,1,2,2,1,1,1,2,1])
-
-# Test 5 - normal usecase
-test_function(5, [2, 1, 2, 0, 0, 2, 1, 0, 1, 0, 0, 2, 2, 2, 1, 2, 0, 0, 0, 2, 1, 0, 2, 0, 0, 1])
+test_function(1, [], "empty array")
+test_function(2, [1], "single item in array")
+test_function(3, [0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2], "sorted array")
+test_function(4, [1,2,0,0,1,2,0,3,2,1], "unknown number")
+test_function(5, [1,2,2,1,1,2,1,2,1,2,2,1,1,1,2,1], "missing one of the numbers")
+test_function(6, [2, 1, 2, 0, 0, 2, 1, 0, 1, 0, 0, 2, 2, 2, 1, 2, 0, 0, 0, 2, 1, 0, 2, 0, 0, 1], "normal usecase")
